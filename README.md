@@ -6,7 +6,7 @@
 >
 > **Part of [tn-master](https://github.com/STP-KAS/tn-master)**, the map of every TN10 storm. Renamed on 11 Oct 2026 from `tn10-vprogs-stress-findings`; old links redirect here.
 >
-> ← previous storm: [tn10-storm-2026-09-18-mining](https://github.com/STP-KAS/tn10-storm-2026-09-18-mining) | next storm: [tn10-storm-2026-09-25-build](https://github.com/STP-KAS/tn10-storm-2026-09-25-build) →
+> ← previous storm: [tn10-storm-2026-09-18-mining-public](https://github.com/STP-KAS/tn10-storm-2026-09-18-mining-public) | next storm: [tn10-storm-2026-09-25-build](https://github.com/STP-KAS/tn10-storm-2026-09-25-build) →
 
 > **Experimental only. Not a product.**
 >
