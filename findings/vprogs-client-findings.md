@@ -114,7 +114,7 @@ coins (finding 5).
 - 25 Sep 20:12 CEST probe of the hosted demo: last settlement DAA **580,229,488**, virtual DAA **580,293,545**, a gap of
   **64,057 DAA** (≈ 85.4 min at 12.5 DAA/s from an 8-second rate sample; ≈ 107 min at the 10 BPS target), `settlementMoved=false`,
   while the L2 tip moved 57 during the sample. Settlement moved later (settled DAA 580,940,363 at ~15:31 CEST on 26 Sep, per
-  [build-opinion CHECKS](https://github.com/STP-KAS/tn10-vprogs-build-opinion/blob/main/CHECKS.md)).
+  [build-opinion CHECKS](https://github.com/STP-KAS/tn10-storm-2026-09-26-build-opinion/blob/main/CHECKS.md)).
 - A campaign against the hosted demo that evening (last status 21:45:58): 1,220 sends, 10,349 send failures, **0 finished games,
   1,534 game failures**. I did not isolate the cause (the frozen settlement, the fee floor and coin reuse are all candidates).
 - PR #165 describes a settler loop re-feeding superseded bundles (~3 Hz for hours) and a DA "latest settlement" row frozen on lanes

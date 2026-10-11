@@ -3,6 +3,10 @@
 > Good intentions, shaky hands. STP does not know what he is doing. We test, we write down what we think we saw, and that is the whole product. A number here is not the truth. A chart is not the truth. Any other sentence that sounds sure of itself is not the truth either. Do not count any of it as a claim.
 >
 > [Disclaimer](DISCLAIMER.md)
+>
+> **Part of [tn-master](https://github.com/STP-KAS/tn-master)**, the map of every TN10 storm. Renamed on 11 Oct 2026 from `tn10-vprogs-stress-findings`; old links redirect here.
+>
+> ← previous storm: [tn10-storm-2026-09-18-mining](https://github.com/STP-KAS/tn10-storm-2026-09-18-mining) | next storm: [tn10-storm-2026-09-25-build](https://github.com/STP-KAS/tn10-storm-2026-09-25-build) →
 
 > **Experimental only. Not a product.**
 >
@@ -64,18 +68,18 @@ Anything more on the fee cap stays a draft until I file it myself (or Maxim pref
 
 ### Where we differ from the final verdict
 
-[tn10-vprogs-final-verdict](https://github.com/STP-KAS/tn10-vprogs-final-verdict) (26 Sep 15:49 CEST, "up for debate") reads
-[tn10-vprogs-build-opinion](https://github.com/STP-KAS/tn10-vprogs-build-opinion). I checked its claims about these findings against my source data.
+[tn10-storm-2026-09-26-verdict](https://github.com/STP-KAS/tn10-storm-2026-09-26-verdict) (26 Sep 15:49 CEST, "up for debate") reads
+[tn10-storm-2026-09-26-build-opinion](https://github.com/STP-KAS/tn10-storm-2026-09-26-build-opinion). I checked its claims about these findings against my source data.
 
 **Adopted (it is right, this README is corrected accordingly):**
-- *"Network TPS" is a processed-block-body counter.* The 12,175 peak and 5.7k median count transactions inside every processed block body, so one tx can be counted more than once. Round 7 measured the overstatement at B/A = 1.337 ([round-7 README](https://github.com/STP-KAS/tn10-vprogs-round7-ideas/blob/main/README.md)). The 12,175 peak is not selected-chain throughput.
+- *"Network TPS" is a processed-block-body counter.* The 12,175 peak and 5.7k median count transactions inside every processed block body, so one tx can be counted more than once. Round 7 measured the overstatement at B/A = 1.337 ([round-7 README](https://github.com/STP-KAS/tn10-storm-2026-09-26-r7/blob/main/README.md)). The 12,175 peak is not selected-chain throughput.
 - *The mempool panic was at a cap I lowered.* `--ram-scale=0.1` scaled the count cap to 100,000; the default in kaspad v2.1.0 `mining/src/mempool/config.rs` is `1_000_000` (checked). A default-cap run was not done.
-- *The "85 min" settlement lag depends on a rate sample.* The measurement is the **64,057 DAA** gap. My probe converted it with 12.5 DAA/s from an 8-second sample; at the 10 BPS target it is ~107 min. The freeze is historical: at ~15:31 CEST on 26 Sep the demo's settled DAA was 580,940,363, 39,844 DAA behind virtual ([build-opinion CHECKS](https://github.com/STP-KAS/tn10-vprogs-build-opinion/blob/main/CHECKS.md)).
+- *The "85 min" settlement lag depends on a rate sample.* The measurement is the **64,057 DAA** gap. My probe converted it with 12.5 DAA/s from an 8-second sample; at the 10 BPS target it is ~107 min. The freeze is historical: at ~15:31 CEST on 26 Sep the demo's settled DAA was 580,940,363, 39,844 DAA behind virtual ([build-opinion CHECKS](https://github.com/STP-KAS/tn10-storm-2026-09-26-build-opinion/blob/main/CHECKS.md)).
 - *Rounds 5–6 are L1 payload chains, not vprogs*, and #165 is not retested. Agreed (already said in "Setups used").
 - *The vprogs client lost the flood to its fee and its coins; the guest rule held in exec mode.* Agreed, and upstream now maps those three failures to #165 / #166 / #103.
 
 **Where we differ (with evidence):**
-- *"No reconciled net is in the public set."* Since the verdict, round 7 published one: over 10 min (16:03–16:13 CEST, selected-chain blocks only), my runners paid 458.5 TKAS, 521.5 TKAS of fee value landed with my miners, **net −63 TKAS**; my miners had 54.3 % of coinbase value, vs the "~57 %" estimate ([`logs/ledger2.jsonl`](https://github.com/STP-KAS/tn10-vprogs-round7-ideas/blob/main/logs/ledger2.jsonl)). This meets the verdict's own debate condition 5 **for one quiet-ish window only**; the storm-hour fee totals in this README remain gross.
+- *"No reconciled net is in the public set."* Since the verdict, round 7 published one: over 10 min (16:03–16:13 CEST, selected-chain blocks only), my runners paid 458.5 TKAS, 521.5 TKAS of fee value landed with my miners, **net −63 TKAS**; my miners had 54.3 % of coinbase value, vs the "~57 %" estimate ([`logs/ledger2.jsonl`](https://github.com/STP-KAS/tn10-storm-2026-09-26-r7/blob/main/logs/ledger2.jsonl)). This meets the verdict's own debate condition 5 **for one quiet-ish window only**; the storm-hour fee totals in this README remain gross.
 - *"Pull 165 is identified, not confirmed."* Still true for a retest (none done). But the author has since confirmed the mapping of findings 1, 2 and 8 to #165's mechanisms, and the PR head moved to `bcebf59`.
 
 ---
@@ -160,7 +164,7 @@ users during those hours.
 - index-free runners: ~954k in round 5 and ~685k in round 6;
 - KNS: ~134k in name prices.
 
-These are gross counters, not a net cost. One measured net exists, from round 7 (10 min, 16:03–16:13 CEST 26 Sep, selected-chain blocks): my runners paid 458.5 TKAS (75 % of all TN10 fees), my miners received 521.5 TKAS of fee value, **net −63 TKAS**, and my miners had 54.3 % of coinbase value ([round 7](https://github.com/STP-KAS/tn10-vprogs-round7-ideas/blob/main/README.md)). That window does not carry over to the storm hours.
+These are gross counters, not a net cost. One measured net exists, from round 7 (10 min, 16:03–16:13 CEST 26 Sep, selected-chain blocks): my runners paid 458.5 TKAS (75 % of all TN10 fees), my miners received 521.5 TKAS of fee value, **net −63 TKAS**, and my miners had 54.3 % of coinbase value ([round 7](https://github.com/STP-KAS/tn10-storm-2026-09-26-r7/blob/main/README.md)). That window does not carry over to the storm hours.
 
 ---
 
@@ -223,7 +227,7 @@ Evidence numbers are from my logs. Detail for each: [`findings/vprogs-client-fin
    - A 0.5 TKAS 1-in-2-out payment is 20,001 grams, so only ~25 fit per block (round 1).
 
    PR #165's fee solver accounts for storage mass, which is good. The cost of reaching a target rate on a small coin can still be very high (see 5).
-8. **[Mechanisms targeted by #165, per the author]** **Hosted tic-tac-toe settlement looked frozen.** At 25 Sep 20:12 CEST the demo's last settlement was at DAA 580,229,488 vs virtual DAA 580,293,545, a gap of **64,057 DAA**, and it was not moving while the L2 tip advanced. (I first wrote "≈ 85 min"; that used 12.5 DAA/s from an 8-second sample. At the 10 BPS target it is ≈ 107 min. The DAA gap is the measurement.) By ~15:31 CEST on 26 Sep settlement had moved on (settled DAA 580,940,363, still 39,844 DAA behind virtual, per [build-opinion CHECKS](https://github.com/STP-KAS/tn10-vprogs-build-opinion/blob/main/CHECKS.md)).
+8. **[Mechanisms targeted by #165, per the author]** **Hosted tic-tac-toe settlement looked frozen.** At 25 Sep 20:12 CEST the demo's last settlement was at DAA 580,229,488 vs virtual DAA 580,293,545, a gap of **64,057 DAA**, and it was not moving while the L2 tip advanced. (I first wrote "≈ 85 min"; that used 12.5 DAA/s from an 8-second sample. At the 10 BPS target it is ≈ 107 min. The DAA gap is the measurement.) By ~15:31 CEST on 26 Sep settlement had moved on (settled DAA 580,940,363, still 39,844 DAA behind virtual, per [build-opinion CHECKS](https://github.com/STP-KAS/tn10-storm-2026-09-26-build-opinion/blob/main/CHECKS.md)).
    - A campaign against the hosted demo in the same evening had 0 finished games and 1,534 game failures. I did not isolate the cause.
    - The PR author confirmed on 26 Sep that #165's settler and runner commits target the mechanisms behind this (superseded bundle re-fed at ~Hz with no settlements until restart; served tip advancing only on exit-carrying settlements). Not retested by me.
 
@@ -287,20 +291,20 @@ Practical costs on my side: ~18.5 min node downtime and ~13 GB to rebuild the ut
 
 | Repo | What |
 |---|---|
-| [grok-bot-vprogs-round1-public](https://github.com/STP-KAS/grok-bot-vprogs-round1-public) | Round 1: node/mempool break test, fee-tier probes, first vprogs attempts, hosted tic-tac-toe campaign (clean copy, history squashed) |
-| [grok-bot-vprogs-round2](https://github.com/STP-KAS/grok-bot-vprogs-round2) | Round 2: full throttle 2× → 10×, 1k baseline, disk taper |
-| [grok-bot-vprogs-round3](https://github.com/STP-KAS/grok-bot-vprogs-round3) | Round 3: utxoindex restart, upstream tic-tac-toe + own vprog guest under the storm, draft upstream issues |
-| [grok-bot-vprogs-round4](https://github.com/STP-KAS/grok-bot-vprogs-round4) | Round 4: full-gusto windows, pruning disk emergency, paced 6× run, draft upstream issues U1–U3 |
-| [grok-bot-vprogs-round5](https://github.com/STP-KAS/grok-bot-vprogs-round5) | Round 5: own index-free runners, 150× fee backfire |
-| [grok-bot-vprogs-round6](https://github.com/STP-KAS/grok-bot-vprogs-round6) | Round 6: index-free runners at full speed, ~10.1 M txs, KNS random-name runner |
-| [grok-bot-explorer-rewards-check](https://github.com/STP-KAS/grok-bot-explorer-rewards-check) | TN10 explorer/indexer stall at 25 Sep 21:55:38 |
-| [vprogs-tn-desk-public](https://github.com/STP-KAS/vprogs-tn-desk-public) | SilverScript v1 / vprogs desk note and Windows desk campaign (clean copy, history squashed) |
-| [grok-build-vprogs](https://github.com/STP-KAS/grok-build-vprogs) | Grok Build's wallet load test via public wRPC and its hosted tic-tac-toe game |
-| [tn10-vprogs-round7-ideas](https://github.com/STP-KAS/tn10-vprogs-round7-ideas) | Round 7: new vprogs ideas, CovTTT covenant prototypes, selected-chain TPS and the fees-vs-coinbase ledger |
-| [tn10-vprogs-round8-covenants](https://github.com/STP-KAS/tn10-vprogs-round8-covenants) | Round 8: escrow, commit-reveal coin flip, Merkle voting, sealed-bid auction and CovTTT mass diet as L1 covenants, quiet vs storm |
-| [tn10-vprogs-build-opinion](https://github.com/STP-KAS/tn10-vprogs-build-opinion) | Independent read of these stress notes (Grok Build), with public checks |
-| [tn10-vprogs-grokbot-opinion](https://github.com/STP-KAS/tn10-vprogs-grokbot-opinion) | Grok Bot's reply to the build opinion (agree / concede / add) |
-| [tn10-vprogs-final-verdict](https://github.com/STP-KAS/tn10-vprogs-final-verdict) | Final verdict (up for debate) on the build opinion. Testnet only, not Kaspa core, not an audit |
+| [tn10-storm-2026-09-25-r1](https://github.com/STP-KAS/tn10-storm-2026-09-25-r1) | Round 1: node/mempool break test, fee-tier probes, first vprogs attempts, hosted tic-tac-toe campaign (clean copy, history squashed) |
+| [tn10-storm-2026-09-25-r2](https://github.com/STP-KAS/tn10-storm-2026-09-25-r2) | Round 2: full throttle 2× → 10×, 1k baseline, disk taper |
+| [tn10-storm-2026-09-26-r3](https://github.com/STP-KAS/tn10-storm-2026-09-26-r3) | Round 3: utxoindex restart, upstream tic-tac-toe + own vprog guest under the storm, draft upstream issues |
+| [tn10-storm-2026-09-26-r4](https://github.com/STP-KAS/tn10-storm-2026-09-26-r4) | Round 4: full-gusto windows, pruning disk emergency, paced 6× run, draft upstream issues U1–U3 |
+| [tn10-storm-2026-09-26-r5](https://github.com/STP-KAS/tn10-storm-2026-09-26-r5) | Round 5: own index-free runners, 150× fee backfire |
+| [tn10-storm-2026-09-26-r6](https://github.com/STP-KAS/tn10-storm-2026-09-26-r6) | Round 6: index-free runners at full speed, ~10.1 M txs, KNS random-name runner |
+| [tn10-storm-2026-09-26-explorer-check](https://github.com/STP-KAS/tn10-storm-2026-09-26-explorer-check) | TN10 explorer/indexer stall at 25 Sep 21:55:38 |
+| [tn10-storm-2026-09-25-vprogs-desk](https://github.com/STP-KAS/tn10-storm-2026-09-25-vprogs-desk) | SilverScript v1 / vprogs desk note and Windows desk campaign (clean copy, history squashed) |
+| [tn10-storm-2026-09-25-build](https://github.com/STP-KAS/tn10-storm-2026-09-25-build) | Grok Build's wallet load test via public wRPC and its hosted tic-tac-toe game |
+| [tn10-storm-2026-09-26-r7](https://github.com/STP-KAS/tn10-storm-2026-09-26-r7) | Round 7: new vprogs ideas, CovTTT covenant prototypes, selected-chain TPS and the fees-vs-coinbase ledger |
+| [tn10-storm-2026-09-26-r8](https://github.com/STP-KAS/tn10-storm-2026-09-26-r8) | Round 8: escrow, commit-reveal coin flip, Merkle voting, sealed-bid auction and CovTTT mass diet as L1 covenants, quiet vs storm |
+| [tn10-storm-2026-09-26-build-opinion](https://github.com/STP-KAS/tn10-storm-2026-09-26-build-opinion) | Independent read of these stress notes (Grok Build), with public checks |
+| [tn10-storm-2026-09-26-bot-opinion](https://github.com/STP-KAS/tn10-storm-2026-09-26-bot-opinion) | Grok Bot's reply to the build opinion (agree / concede / add) |
+| [tn10-storm-2026-09-26-verdict](https://github.com/STP-KAS/tn10-storm-2026-09-26-verdict) | Final verdict (up for debate) on the build opinion. Testnet only, not Kaspa core, not an audit |
 
 ## Files
 
